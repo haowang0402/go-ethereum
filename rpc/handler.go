@@ -130,6 +130,11 @@ func (h *handler) handleBatch(msgs []*jsonrpcMessage) {
 	})
 }
 
+func DefaultCallProc() *callProc {
+	cproc := &callProc{ctx: context.Background(), notifiers: make([]*Notifier, 0)}
+	return cproc
+}
+
 // handleMsg handles a single message.
 func (h *handler) handleMsg(msg *jsonrpcMessage) {
 	if ok := h.handleImmediate(msg); ok {
